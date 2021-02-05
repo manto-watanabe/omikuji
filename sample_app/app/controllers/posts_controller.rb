@@ -1,11 +1,24 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if User.first.present?
+      @user_lucky_results = User.first.user_luckies.map(&:result)
+    else
+      @user_lucky_results = []
+    end
   end
 
   def draw
-    @post = Post.all.map(&:content).sample
+    lucky = luckies.sample
+    user = User.first || User.create
+    @post = Post.create(content: lucky, user_id: user.id)
+    UserLucky.create(result: @post.content, user_id: @post.user_id)
   end
+
+  private
+
+    def luckies
+      %w(大吉 中吉 小吉 吉 凶 大凶)
+    end
 end
 
 
