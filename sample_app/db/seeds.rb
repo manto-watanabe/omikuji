@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+luckies = %w(大吉 中吉 小吉 吉 凶 大凶)
+
+luckies.each do |lucky|
+    Post.create(content: lucky)
+end

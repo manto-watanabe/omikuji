@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def draw
-    @post = Post.all.sort_by{rand}.slice(0,10)
+    @post = Post.all.map(&:content).sample
   end
 end
 
