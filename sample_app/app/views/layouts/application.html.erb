@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SampleApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+  <div class="header-logo">
+    <!-- 以下のリンクをlink_toメソッドを用いて変更してください -->
+    <%= link_to("おみくじアプリ","/home/top")%>
+  </div>
+  <ul class="header-menus">
+    <li>
+      <!-- ここにlink_toメソッドを用いて投稿一覧ページへのリンクを作成してください -->
+              <%= link_to("おみくじ結果一覧","/posts/index")%>
+    </li>
+  </ul>
+</header>
+    <%= yield %>
+  </body>
+</html>
