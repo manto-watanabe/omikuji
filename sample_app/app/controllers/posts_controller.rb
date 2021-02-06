@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  after_action :create_user_lucky, only: :draw
+
   def index
     if User.first.present?
       @user_lucky_results = User.first.user_luckies.map(&:result)
@@ -9,15 +11,18 @@ class PostsController < ApplicationController
 
   def draw
     lucky = luckies.sample
-    user = User.first || User.create
+    user = User.first_user
     @post = Post.create(content: lucky, user_id: user.id)
-    UserLucky.create(result: @post.content, user_id: @post.user_id)
   end
 
   private
 
     def luckies
       %w(大吉 中吉 小吉 吉 凶 大凶)
+    end
+
+    def create_user_lucky
+      UserLucky.create(result: @post.content, user_id: @post.user_id) 
     end
 end
 
