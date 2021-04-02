@@ -1,5 +1,5 @@
-<% @posts.each do |post| %>
+<% @user_lucky_results.each_with_index do |result, index| %>
    <div class="posts-index-item">
-     <%= post.content %>
+     <%= "#{index+1}回目: #{result}" %>
    </div>
  <% end %>
