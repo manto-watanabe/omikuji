@@ -10,9 +10,11 @@ class PostsController < ApplicationController
   end
 
   def draw
+
     lucky = luckies.sample
     user = User.first_user
     @post = Post.create(content: lucky, user_id: user.id)
+
   end
 
   private
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
 end
 
 
+# @post = Post.all.sort_by{rand}.slice(0,10)
 # @post = SELECT * FROM posts ORDER BY RANDOM();
 
 # Post.find_by(id: Random)
