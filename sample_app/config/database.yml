@@ -21,6 +21,6 @@ test:
   <<: *default
   database: test
 
- production:
-   <<: *default
-   database: production
+production:
+  <<: *default
+  database: production
